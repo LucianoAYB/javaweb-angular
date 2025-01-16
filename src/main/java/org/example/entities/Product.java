@@ -6,44 +6,57 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
+    @Column(name = "ID_PRODUCT")
+    private Long idP;
 
-    @Column(name = "SUPPLIER_NAME")
-    private String supplierName;
+    @ManyToOne
+        @JoinColumn(name = "ID_PRODUCT")
+    private Supplier supplier;
 
-    @Column(name = "EMAIL")
-    private String email;
+    @Column(name = "PRODUCT_NAME")
+    private String productName;
+
+    @Column(name = "PRODUCT_VALUE")
+    private String productValue;
+
 
     public Product(){}
-    public Product(Long id, String supplierName, String email){
-        this.supplierName = supplierName;
-        this.email = email;
-        this.id = id;
+    public Product(Long idP, String supplierName, String productName, String productValue){
+        this.idP = idP;
+        this.supplier = supplier;
+        this.productName = productName;
+        this.productValue = productValue;
     }
 
     public Long getId() {
-        return id;
+        return idP;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idP) {
+        this.idP = idP;
     }
 
-    public String getSupplierName() {
-        return supplierName;
+     public String getProductName() {
+        return productName;
     }
 
-    public void setSupplierName(String supplierName) {
-        this.supplierName = supplierName;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getProductValue() {
+        return productValue;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setProductValue(String productValue) {
+        this.productValue = productValue;
     }
 
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 }

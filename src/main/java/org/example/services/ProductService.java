@@ -26,6 +26,17 @@ public class ProductService {
     public Product insertSupplier(Product supplier){
         return productRepository.save(supplier);
     }
+
+    public Product atualizar(Long id, Product updatedProduct){
+        return productRepository.findById(id).map(produto -> {
+            produto.setProductName(updatedProduct.getProductName());
+            produto.setProductValue(updatedProduct.getProductValue());
+            produto.setSupplier(updatedProduct.getSupplier());
+            return productRepository.save(produto);
+        }).orElseThrow(() ->new RuntimeException("Product não encontrado em ID: " +id));
+    }
+
+
     //deletar
     public void deleteId(Long id){
         productRepository.deleteById(id);

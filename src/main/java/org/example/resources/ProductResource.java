@@ -32,8 +32,8 @@ public class ProductResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product) {
-        return productService.findByIdSupplier(id)
+    public ResponseEntity<Product> update(@PathVariable Long idP, @RequestBody Product product) {
+        return productService.findByIdSupplier(idP)
                 .map(existingSupplier -> {
                     product.setId(existingSupplier.getId());
                     return ResponseEntity.ok(productService.insertSupplier(product));

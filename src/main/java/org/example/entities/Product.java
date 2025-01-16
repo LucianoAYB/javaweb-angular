@@ -10,7 +10,7 @@ public class Product {
     private Long idP;
 
     @ManyToOne
-        @JoinColumn(name = "ID_PRODUCT")
+    @JoinColumn(name = "ID_SUPPLIER", nullable = false)
     private Supplier supplier;
 
     @Column(name = "PRODUCT_NAME")
@@ -20,8 +20,10 @@ public class Product {
     private String productValue;
 
 
-    public Product(){}
-    public Product(Long idP, String supplierName, String productName, String productValue){
+    public Product() {
+    }
+
+    public Product(Long idP, String supplierName, String productName, String productValue) {
         this.idP = idP;
         this.supplier = supplier;
         this.productName = productName;
@@ -36,7 +38,7 @@ public class Product {
         this.idP = idP;
     }
 
-     public String getProductName() {
+    public String getProductName() {
         return productName;
     }
 

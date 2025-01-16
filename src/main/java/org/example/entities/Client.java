@@ -12,7 +12,9 @@ public class Client {
     @Column(name = "Client_name")
     private String clientName;
 
-    public Client(){}
+    public Client(){
+
+    }
 
     public Client(Long id,String clientName){
         this.id = id;

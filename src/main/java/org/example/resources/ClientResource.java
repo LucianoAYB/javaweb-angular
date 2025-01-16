@@ -33,7 +33,7 @@ public class ClientResource {
 
     @PutMapping("/{id}")
     public ResponseEntity<Client> update(@PathVariable Long id, @RequestBody Client product) {
-        return clientService.findById(id)
+        return clientService.findByIdClient(id)
                 .map(existingClient -> {
                     product.setId(existingClient.getId());
                     return ResponseEntity.ok(clientService.insertClient(product));
@@ -43,7 +43,7 @@ public class ClientResource {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable Long id) {
-        return clientService.findById(id)
+        return clientService.findByIdClient(id)
                 .map(existingClient -> {
                     clientService.deleteId(id);
                     return ResponseEntity.noContent().build();

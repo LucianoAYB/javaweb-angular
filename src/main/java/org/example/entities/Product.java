@@ -25,16 +25,16 @@ public class Product {
 
     public Product(Long idP, String supplierName, String productName, String productValue) {
         this.idP = idP;
-        this.supplier = supplier;
+//        this.supplier = supplier;
         this.productName = productName;
         this.productValue = productValue;
     }
 
-    public Long getId() {
+    public Long getIdp() {
         return idP;
     }
 
-    public void setId(Long idP) {
+    public void setIdP(Long idp) {
         this.idP = idP;
     }
 

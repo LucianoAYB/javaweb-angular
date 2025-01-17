@@ -16,34 +16,34 @@ public class ProductResource {
 
     @GetMapping
     public List<Product> findAll(){
-        return productService.findAllSupplier();
+        return productService.findAllProduct();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> findById(@PathVariable Long id) {
-        return productService.findByIdSupplier(id)
+        return productService.findByIdProduct(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public Product create(@RequestBody Product product) {
-        return productService.insertSupplier(product);
+        return productService.insertProduct(product);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable Long idP, @RequestBody Product product) {
-        return productService.findByIdSupplier(idP)
-                .map(existingSupplier -> {
-                    product.setId(existingSupplier.getId());
-                    return ResponseEntity.ok(productService.insertSupplier(product));
+    public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product) {
+        return productService.findByIdProduct(id)
+                .map(existingProduct -> {
+                    product.setIdP(existingProduct.getIdp());
+                    return ResponseEntity.ok(productService.insertProduct(product));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable Long id) {
-        return productService.findByIdSupplier(id)
+        return productService.findByIdProduct(id)
                 .map(existingSupplier -> {
                     productService.deleteId(id);
                     return ResponseEntity.noContent().build();

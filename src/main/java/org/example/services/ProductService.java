@@ -13,18 +13,17 @@ public class ProductService {
     @Autowired
     public ProductRepository productRepository;
 
-    //buscar todos fornecedores
-    public List<Product> findAllSupplier(){
+    public List<Product> findAllProduct(){
         return productRepository.findAll();
     }
 
     //buscar por id
-    public Optional<Product> findByIdSupplier(Long id){
+    public Optional<Product> findByIdProduct(Long id){
         return productRepository.findById(id);
     }
-    //inserir por fornecedor
-    public Product insertSupplier(Product supplier){
-        return productRepository.save(supplier);
+
+    public Product insertProduct(Product product){
+        return productRepository.save(product);
     }
 
     public Product atualizar(Long id, Product updatedProduct){
